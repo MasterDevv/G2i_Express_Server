@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import AcronymsController from '@controllers/acronyms.controller';
+import AcronymsController from '@/controllers/AcronymsController';
 import { CreateAcronymDto } from '@dtos/acronyms.dto';
 import { Routes } from '@interfaces/routes.interface';
-import validationMiddleware from '@middlewares/validation.middleware';
-import authMiddleware from '@/middlewares/auth.middleware';
+import validationMiddleware from '@/middlewares/validationMiddleware';
+import authMiddleware from '@/middlewares/authMiddleware';
 
 class AcronymsRoute implements Routes {
   public path = '/acronym';

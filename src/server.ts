@@ -1,6 +1,6 @@
 import App from '@/app';
-import IndexRoute from '@routes/index.route';
-import AcronymsRoute from '@routes/acronym.route';
+import IndexRoute from '@/routes/IndexRoute';
+import AcronymsRoute from '@/routes/AcronymsRoute';
 import validateEnv from '@utils/validateEnv';
 
 validateEnv();

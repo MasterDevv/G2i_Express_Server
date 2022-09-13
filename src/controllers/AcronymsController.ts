@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { CreateAcronymDto } from '@dtos/acronyms.dto';
 import { Acronym } from '@interfaces/acronyms.interface';
-import acronymService from '@services/acronyms.service';
+import acronymService from '@/services/AcronymService';
 
 class AcronymsController {
   public acronymService = new acronymService();

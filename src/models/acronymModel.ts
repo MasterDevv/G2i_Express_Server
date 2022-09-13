@@ -4,7 +4,6 @@ import { Acronym } from '@interfaces/acronyms.interface';
 const rawdata = fs.readFileSync('src/db/acronym.json');
 const acronyms = JSON.parse(rawdata.toString());
 
-// password: password
 const acronymModel: Acronym[] = acronyms.map((acronym: any) => ({
   acronym: Object.keys(acronym)[0],
   definition: acronym[Object.keys(acronym)[0]],

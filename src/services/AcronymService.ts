@@ -1,7 +1,7 @@
 import { CreateAcronymDto } from '@dtos/acronyms.dto';
 import { HttpException } from '@exceptions/HttpException';
 import { Acronym } from '@interfaces/acronyms.interface';
-import acronymModel from '@/models/acronyms.model';
+import acronymModel from '@/models/acronymModel';
 import { isEmpty } from '@utils/util';
 import fs from 'fs';
 
