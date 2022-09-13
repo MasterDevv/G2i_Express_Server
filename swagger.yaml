@@ -1,0 +1,102 @@
+tags:
+- name: acronym
+  description: acronym API
+
+paths:
+# [GET] acronym
+  /acronym:
+    get:
+      tags:
+      - acronym
+      summary: Find All Acronyms
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [POST] acronym
+    post:
+      tags:
+      - acronym
+      summary: Add Acronyms
+      parameters:
+      - name: body
+        in: body
+        description: acronym Data
+        required: true
+        schema:
+          $ref: '#/definitions/acronym'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+# [PUT] acronym/:id
+    put:
+      tags:
+      - acronym
+      summary: Update Acronyms By Acronym
+      parameters:
+      - name: Acronym
+        in: path
+        description: acronym Id
+        required: true
+        type: integer
+      - name: body
+        in: body
+        description: acronyms Data
+        required: true
+        schema:
+          $ref: '#/definitions/acronym'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] acronym/id
+    delete:
+      tags:
+      - acronym
+      summary: Delete Acronym By Id
+      parameters:
+      - name: id
+        in: path
+        description: acronym Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  acronym:
+    type: object
+    required:
+        - acronym
+        - definition
+    properties:
+      email:
+        type: string
+        description: acronym acronym
+      password:
+        type: string
+        description: acronym definition
+
+schemes:
+ - https
+ - http
