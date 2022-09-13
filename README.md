@@ -9,8 +9,7 @@ Your system needs a fairly recent version of [Node](https://nodejs.org/en/).
 ### Heroku url
 
 
-### Git url
-[Node](https://github.com/Satan199787/G2i_Express_Server.git)
+### Git url (https://github.com/Satan199787/G2i_Express_Server.git)
 
 ### Installing
 If that's all good, then install all necessary dependencies inside the target folder using:
