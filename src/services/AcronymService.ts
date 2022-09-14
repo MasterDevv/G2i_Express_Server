@@ -31,7 +31,7 @@ class AcronymService {
     return acronymsData;
   }
 
-  public async updateAcronym(acronymId: string, acronymData: CreateAcronymDto): Promise<Acronym> {
+  public async updateAcronym(acronymId: string, acronymData: CreateAcronymDto): Promise<Acronym[]> {
     if (isEmpty(acronymData)) throw new HttpException(400, 'acronymData is empty');
     console.log('id is ', acronymId.toString());
     const findAcronym: Acronym = this.acronyms.find(acronym => acronym.acronym === acronymId);
@@ -39,14 +39,15 @@ class AcronymService {
       throw new HttpException(409, `This acronym ${acronymData.acronym} does not exist`);
     }
     const updateData: Acronym = { ...acronymData };
-    const acronymsData = this.acronyms.map((acronym: Acronym) => {
+    const acronymsData = [];
+    this.acronyms.map((acronym: Acronym) => {
       if (acronym.acronym === acronymId) acronym = { ...acronym, definition: acronymData.definition };
       const newItem = {};
       newItem[acronym.acronym] = acronym.definition;
-      return newItem;
+      acronymsData.push(newItem);
     });
     fs.writeFileSync('src/db/acronym.json', JSON.stringify(acronymsData));
-    return updateData;
+    return acronymsData;
   }
 
   public async deleteAcronym(acronymId: string): Promise<Acronym[]> {

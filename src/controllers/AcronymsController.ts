@@ -17,8 +17,8 @@ class AcronymsController {
   public addAcoronym = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const addData: CreateAcronymDto = req.body;
-      const addAcronymData: Acronym = await this.acronymService.addAcronym(addData);
-      res.status(201).json({ data: addAcronymData, message: 'added' });
+      const addedAcronymData: Acronym[] = await this.acronymService.addAcronym(addData);
+      res.status(201).json({ data: addedAcronymData, message: 'added' });
     } catch (error) {
       next(error);
     }
@@ -28,9 +28,9 @@ class AcronymsController {
     try {
       const updateData: CreateAcronymDto = req.body;
       const acronymId = req.params.id.toString();
-      const updateAcronymData: Acronym = await this.acronymService.updateAcronym(acronymId, updateData);
+      const updatedAcronymData: Acronym[] = await this.acronymService.updateAcronym(acronymId, updateData);
 
-      res.status(200).json({ data: updateAcronymData, message: 'updated' });
+      res.status(200).json({ data: updatedAcronymData, message: 'updated' });
     } catch (error) {
       next(error);
     }
