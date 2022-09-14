@@ -8,7 +8,7 @@ class AcronymsController {
 
   public getAcronyms = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const findAllAcronymsData: Acronym[] = await this.acronymService.getAcronyms();
+      const findAllAcronymsData: Acronym[] = await this.acronymService.getAcronyms(req.query);
       res.status(200).json({ data: findAllAcronymsData, message: 'findAll' });
     } catch (error) {
       next(error);

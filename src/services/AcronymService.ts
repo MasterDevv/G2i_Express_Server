@@ -8,8 +8,11 @@ import fs from 'fs';
 class AcronymService {
   public acronyms = acronymModel;
 
-  public async getAcronyms(): Promise<Acronym[]> {
-    const acronyms: Acronym[] = this.acronyms;
+  public async getAcronyms(params: any): Promise<Acronym[]> {
+    const { from = 0, limit = 10, search = '' } = params;
+    const acronyms: Acronym[] = this.acronyms
+      .filter(acronym => acronym.acronym.indexOf(search) !== -1 || acronym.definition.indexOf(search) !== -1)
+      .slice(from, parseInt(from) + parseInt(limit));
     return acronyms;
   }
   public async addAcronym(acronymData: CreateAcronymDto): Promise<Acronym> {
