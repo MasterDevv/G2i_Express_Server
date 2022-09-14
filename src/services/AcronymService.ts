@@ -10,9 +10,10 @@ class AcronymService {
 
   public async getAcronyms(params: any): Promise<Acronym[]> {
     const { from = 0, limit = 10, search = '' } = params;
+    console.log('from , limit, search, is ', from, limit, search);
     const acronyms: Acronym[] = this.acronyms
       .filter(acronym => acronym.acronym.indexOf(search) !== -1 || acronym.definition.indexOf(search) !== -1)
-      .slice(from, parseInt(from) + parseInt(limit));
+      .slice(parseInt(from), parseInt(from) + parseInt(limit));
     return acronyms;
   }
   public async addAcronym(acronymData: CreateAcronymDto): Promise<Acronym[]> {

@@ -9,6 +9,19 @@ paths:
       tags:
       - acronym
       summary: Find All acronym
+      parameters:
+      - name: from
+        in: query
+        description: From Number
+        type: number
+      - name: limit
+        in: query
+        description: Limit Number
+        type: number
+      - name: search
+        in: query
+        description: Search String
+        type: string
       responses:
         200:
           description: 'OK'
@@ -49,6 +62,12 @@ paths:
         description: acronym
         required: true
         type: string
+
+      - name: authorization
+        in: header
+        description: an authorization header
+        type: boolean
+
       - name: body
         in: body
         description: acronym Data
@@ -76,6 +95,11 @@ paths:
         description: acronym
         required: true
         type: string
+      - name: authorization
+        in: header
+        description: an authorization header
+        type: boolean
+        
       responses:
         200:
           description: 'OK'

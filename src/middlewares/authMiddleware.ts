@@ -2,8 +2,9 @@ import { NextFunction, Response, Request } from 'express';
 import { HttpException } from '@exceptions/HttpException';
 
 const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
+  console.log('req.header is ', req.header('authorization'));
   try {
-    const Authorization = req.cookies['Authorization'] || (req.header('Authorization') ? true : false);
+    const Authorization = req.cookies['authorization'] || (req.header('authorization') ? true : false);
     if (Authorization) {
       next();
     } else {
