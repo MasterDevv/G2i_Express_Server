@@ -8,7 +8,7 @@ paths:
     get:
       tags:
       - acronym
-      summary: Find All Acronyms
+      summary: Find All acronym
       responses:
         200:
           description: 'OK'
@@ -19,7 +19,7 @@ paths:
     post:
       tags:
       - acronym
-      summary: Add Acronyms
+      summary: Add acronym
       parameters:
       - name: body
         in: body
@@ -36,20 +36,22 @@ paths:
           description: 'Conflict'
         500:
           description: 'Server Error'
-# [PUT] acronym/:id
+
+# [PUT] acronym/acronym
+  /acronym/{acronym}:
     put:
       tags:
       - acronym
-      summary: Update Acronyms By Acronym
+      summary: Update acronym
       parameters:
-      - name: Acronym
+      - name: acronym
         in: path
-        description: acronym Id
+        description: acronym
         required: true
-        type: integer
+        type: string
       - name: body
         in: body
-        description: acronyms Data
+        description: acronym Data
         required: true
         schema:
           $ref: '#/definitions/acronym'
@@ -63,17 +65,17 @@ paths:
         500:
           description: 'Server Error'
 
-# [DELETE] acronym/id
+# [DELETE] acronym/acronym
     delete:
       tags:
       - acronym
-      summary: Delete Acronym By Id
+      summary: Delete acronym
       parameters:
-      - name: id
+      - name: acronym
         in: path
-        description: acronym Id
+        description: acronym
         required: true
-        type: integer
+        type: string
       responses:
         200:
           description: 'OK'
@@ -90,12 +92,12 @@ definitions:
         - acronym
         - definition
     properties:
-      email:
+      acronym:
         type: string
-        description: acronym acronym
-      password:
+        description: abbreviation of something
+      definition:
         type: string
-        description: acronym definition
+        description: definition of acronym
 
 schemes:
  - https

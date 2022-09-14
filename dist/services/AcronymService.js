@@ -68,8 +68,9 @@ function _objectSpreadProps(target, source) {
     return target;
 }
 let AcronymService = class AcronymService {
-    async getAcronyms() {
-        const acronyms = this.acronyms;
+    async getAcronyms(params) {
+        const { from =0 , limit =10 , search =''  } = params;
+        const acronyms = this.acronyms.filter((acronym)=>acronym.acronym.indexOf(search) !== -1 || acronym.definition.indexOf(search) !== -1).slice(from, parseInt(from) + parseInt(limit));
         return acronyms;
     }
     async addAcronym(acronymData) {

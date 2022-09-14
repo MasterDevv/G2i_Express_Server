@@ -15,7 +15,7 @@ class AcronymService {
       .slice(from, parseInt(from) + parseInt(limit));
     return acronyms;
   }
-  public async addAcronym(acronymData: CreateAcronymDto): Promise<Acronym> {
+  public async addAcronym(acronymData: CreateAcronymDto): Promise<Acronym[]> {
     if (isEmpty(acronymData)) throw new HttpException(400, 'acronymData is empty');
     const findAcronym: Acronym = this.acronyms.find(acronym => acronym.acronym === acronymData.acronym);
     if (findAcronym) throw new HttpException(409, `This acronym ${acronymData.acronym} already exists`);
@@ -28,7 +28,7 @@ class AcronymService {
       acronymsData.push(newItem);
     });
     fs.writeFileSync('src/db/acronym.json', JSON.stringify(acronymsData));
-    return addData;
+    return acronymsData;
   }
 
   public async updateAcronym(acronymId: string, acronymData: CreateAcronymDto): Promise<Acronym> {

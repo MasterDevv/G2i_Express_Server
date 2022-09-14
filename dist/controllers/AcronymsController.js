@@ -17,7 +17,7 @@ let AcronymsController = class AcronymsController {
         this.acronymService = new _acronymService.default();
         this.getAcronyms = async (req, res, next)=>{
             try {
-                const findAllAcronymsData = await this.acronymService.getAcronyms();
+                const findAllAcronymsData = await this.acronymService.getAcronyms(req.query);
                 res.status(200).json({
                     data: findAllAcronymsData,
                     message: 'findAll'
