@@ -17,13 +17,8 @@ class AcronymsRoute implements Routes {
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.acronymsController.getAcronyms);
     this.router.post(`${this.path}`, validationMiddleware(CreateAcronymDto, 'body'), this.acronymsController.addAcoronym);
-    this.router.put(
-      `${this.path}/:id(\\d+)`,
-      validationMiddleware(CreateAcronymDto, 'body', true),
-      authMiddleware,
-      this.acronymsController.updateAcronym,
-    );
-    this.router.delete(`${this.path}/:id(\\d+)`, authMiddleware, this.acronymsController.deleteAcronym);
+    this.router.put(`${this.path}/:id`, validationMiddleware(CreateAcronymDto, 'body', true), authMiddleware, this.acronymsController.updateAcronym);
+    this.router.delete(`${this.path}/:id`, authMiddleware, this.acronymsController.deleteAcronym);
   }
 }
 
